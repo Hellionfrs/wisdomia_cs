@@ -1,13 +1,12 @@
 'use server'
 
-import { FormState, SignUpFormSchema } from "./definitions"
+import { FormState, LoginFormSchema } from "./definitions"
 
-export async function signup(state: FormState, formData: FormData): Promise<FormState> {
+export async function login(state: FormState, formData: FormData): Promise<FormState> {
     // 1. Validate fields
     // 2. Create user
     // 3. Create session            
-    const validationResult = SignUpFormSchema.safeParse({
-        name: formData.get("name"),
+    const validationResult = LoginFormSchema.safeParse({
         email: formData.get("email"),
         password: formData.get("password"),
     })
@@ -17,4 +16,9 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
             errors: validationResult.error.flatten().fieldErrors,
         }
     }
-} 
+
+    // return {
+    //     message: "Login successful!",
+    // }
+}
+

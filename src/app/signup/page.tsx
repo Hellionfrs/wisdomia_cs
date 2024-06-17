@@ -12,7 +12,7 @@ export default function Page() {
       <SignupForm />
       <div className="text-center text-sm text-gray-500 dark:text-gray-400">
         Already have an account?{" "}
-        <Link href="#" className="font-medium underline" prefetch={false}>
+        <Link href="login" className="font-medium underline" prefetch={false}>
           Login
         </Link>
       </div>

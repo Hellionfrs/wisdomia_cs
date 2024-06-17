@@ -1,27 +1,16 @@
-"use client";
+'use client'
 
-import { signup } from "@/app/signup/actions";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useFormState, useFormStatus } from "react-dom";
+import { login } from "./actions";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
-export function SignupForm() {
-  const [state, action] = useFormState(signup, undefined);
+
+export function LoginForm() {
+    const [state, action] = useFormState(login, undefined);
   return (
     <form className="space-y-4" action={action}>
-      <div className="space-y-2">
-        <Label htmlFor="name">Name</Label>
-        <Input
-          id="name"
-          name="name"
-          type="name"
-          placeholder="Enter your name"
-        />
-        {state?.errors?.name && (
-          <div className="text-red-500 text-sm">{state?.errors.name}</div>
-        )}
-      </div>
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
         <Input
