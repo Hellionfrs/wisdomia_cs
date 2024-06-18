@@ -5,10 +5,21 @@ import { useFormState, useFormStatus } from "react-dom";
 import { login } from "./actions";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 
 export function LoginForm() {
-    const [state, action] = useFormState(login, undefined);
+    const [state, action] = useFormState( async (state: any, formData: FormData) => {
+      const result = await login(state, formData);
+      if (result?.message) {
+        toast.success(result.message);
+        redirect("/dashboard");
+      } else if (result?.errors) {
+        toast.error("Error creating user");
+      }
+      return result;
+    }, undefined);
   return (
     <form className="space-y-4" action={action}>
       <div className="space-y-2">
