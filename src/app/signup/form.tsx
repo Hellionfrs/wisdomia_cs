@@ -4,13 +4,28 @@ import { signup } from "@/app/signup/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { redirect } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
+import { toast } from "sonner";
 
 export function SignupForm() {
-  const [state, action] = useFormState(signup, undefined);
+  const [state, action] = useFormState(
+    async (state: any, formData: FormData) => {
+      const result = await signup(state, formData);
+      if (result?.message) {
+        toast.success(result.message);
+        redirect("/dashboard");
+      } else if (result?.errors) {
+        toast.error("Error creating user");
+      }
+      return result;
+    },
+    undefined
+  );
   return (
     <form className="space-y-4" action={action}>
-      <div className="space-y-2">
+      {/* Name field is not required */}
+      {/* <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
         <Input
           id="name"
@@ -21,7 +36,7 @@ export function SignupForm() {
         {state?.errors?.name && (
           <div className="text-red-500 text-sm">{state?.errors.name}</div>
         )}
-      </div>
+      </div> */}
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
         <Input
@@ -47,13 +62,35 @@ export function SignupForm() {
             <span>Password must have:</span>
             <ul className="flex flex-col pl-3">
               {state?.errors.password.map((error) => (
-                <li className="list-disc"key={error}>{error}</li>
+                <li className="list-disc" key={error}>
+                  {error}
+                </li>
               ))}
             </ul>
           </div>
         )}
       </div>
-
+      <div className="space-y-2">
+        <Label htmlFor="confirmPassword">Confirm Password</Label>
+        <Input
+          id="confirmPassword"
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm your password"
+        />
+        {state?.errors?.confirmPassword && (
+          <div className="text-red-500 text-sm">
+            <span>Password must have:</span>
+            <ul className="flex flex-col pl-3">
+              {state?.errors.confirmPassword.map((error) => (
+                <li className="list-disc" key={error}>
+                  {error}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
       <SubmitButton />
     </form>
   );
