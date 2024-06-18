@@ -1,50 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/app/assets/logo.png";
+import Navbar from "@/components/ui/navbar";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link
-          href="#"
-          className="flex items-center justify-center"
-          prefetch={false}
-        >
-          <WisdomiaLogo />
-          <span className="sr-only">Crew Scheduler</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Features
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Pricing
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Testimonials
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Contact
-          </Link>
-        </nav>
-      </header>
+      <Navbar />
       <main className="flex-1">
         {/* Welcome to Wisdomia */}
         <section className="w-full py-12 md:py-24 lg:py-32">
@@ -71,7 +33,7 @@ export default function Home() {
                     Login
                   </Link>
                   <Link
-                    href="register"
+                    href="signup"
                     className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
                     prefetch={false}
                   >
@@ -80,11 +42,11 @@ export default function Home() {
                 </div>
               </div>
               <Image
-                src="/placeholder.svg"
+                src={logo}
                 width="550"
                 height="550"
                 alt="Hero"
-                style={{ objectFit: "fill" }}
+                style={{ objectFit: "contain" }}
                 layout="responsive"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
               />
@@ -143,11 +105,11 @@ export default function Home() {
                 </ul>
               </div>
               <Image
-                src="/placeholder.svg"
+                src={logo}
                 width="550"
                 height="310"
                 alt="Image"
-                style={{ objectFit: "fill" }}
+                style={{ objectFit: "contain" }}
                 layout="responsive"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
               />
@@ -330,7 +292,7 @@ function CalendarIcon(props: any) {
   );
 }
 
-function CheckIcon(props: any) {
+function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -349,7 +311,7 @@ function CheckIcon(props: any) {
   );
 }
 
-function ClockIcon(props: any) {
+function ClockIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -369,7 +331,7 @@ function ClockIcon(props: any) {
   );
 }
 
-function WisdomiaLogo(props: any) {
+function WisdomiaLogo(props: React.ImgHTMLAttributes<HTMLImageElement>) {
   return (
     <Image
       {...props}
@@ -382,7 +344,7 @@ function WisdomiaLogo(props: any) {
   );
 }
 
-function UsersIcon(props: any) {
+function UsersIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
