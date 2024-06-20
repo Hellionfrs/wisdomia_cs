@@ -1,5 +1,6 @@
 "use server";
 
+import { createSession } from "../_lib/session";
 import { FormState, LoginFormSchema } from "./definitions";
 
 export async function login(
@@ -21,6 +22,7 @@ export async function login(
   }
 
   //create session
+
   const response = await fetch(`${process.env.BACKEND_URL}/user/login`, {
     method: "POST",
     body: JSON.stringify({
@@ -37,11 +39,11 @@ export async function login(
     return {
       message: errorData,
     };
-  } else {
-    const sessionPayload = await response.json();
-    return {
-      message: "Login successful",
-      // session: sessionPayload,
-    };
   }
+  const sessionPayload = await response.json();
+  await createSession(sessionPayload.data[0].token);
+  return {
+    message: "Login successful",
+    id: sessionPayload.data[0].id,
+  };
 }

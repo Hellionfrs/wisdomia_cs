@@ -28,7 +28,7 @@ export default function Navbar() {
             prefetch={false}
           >
             <WisdomiaLogo className="h-6 w-6" />
-            <span>Acme Inc</span>
+            <span>Wisdomia</span>
           </Link>
           <nav className="grid gap-2 py-6">
             <Link
@@ -68,7 +68,7 @@ export default function Navbar() {
         prefetch={false}
       >
         <WisdomiaLogo className="h-6 w-6" />
-        <span>Acme Inc</span>
+        <span>Wisdomia</span>
       </Link>
       <nav className="hidden lg:flex gap-6">
         <Link
