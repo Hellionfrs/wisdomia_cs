@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/app/assets/logo.png";
+import hero from "@/app/assets/collorfulpens.jpg";
 import Navbar from "@/components/ui/navbar";
+import { User } from "lucide-react";
 
 export default function Home() {
   return (
@@ -13,11 +15,11 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] overflow-hidden">
               <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
+                <div className="flex flex-col space-y-2 items-center sm:items-start">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Welcome to Wisdomia
                   </h1>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                  <p className="max-w-[600px] text-justify text-gray-500 md:text-xl dark:text-gray-400">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut
                     repellendus error natus omnis tenetur maxime, nemo, cumque
                     aut commodi quo corrupti accusantium facere facilis
@@ -42,12 +44,12 @@ export default function Home() {
                 </div>
               </div>
               <Image
-                src={logo}
+                src={hero}
                 width="550"
                 height="550"
                 alt="Hero"
-                style={{ objectFit: "contain" }}
-                layout="responsive"
+                style={{ objectFit: "cover" }}
+                priority
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
               />
             </div>
@@ -110,7 +112,7 @@ export default function Home() {
                 height="310"
                 alt="Image"
                 style={{ objectFit: "contain" }}
-                layout="responsive"
+                priority
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
               />
             </div>
@@ -132,13 +134,7 @@ export default function Home() {
               <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
                 <div className="flex flex-col justify-center space-y-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-6">
                   <div className="flex items-start gap-4">
-                    <Image
-                      src="/placeholder.svg"
-                      width="48"
-                      height="48"
-                      alt="Avatar"
-                      className="rounded-full"
-                    />
+                    <UsersIcon />
                     <div>
                       <h3 className="text-xl font-bold">Jane Doe</h3>
                       <p className="text-gray-500 dark:text-gray-400">
@@ -147,19 +143,15 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-500 dark:text-gray-400">
-                    {"Crew Scheduler has been a game-changer for our\n business.It has helped us streamline our scheduling\n process, reduceovertime, and improve overall\n productivity."}
+                    {
+                      "Crew Scheduler has been a game-changer for our\n business.It has helped us streamline our scheduling\n process, reduceovertime, and improve overall\n productivity."
+                    }
                   </p>
                 </div>
                 <div className="flex flex-col justify-center space-y-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-6">
                   <div className="flex items-start gap-4">
-                    <Image
-                      src="/placeholder.svg"
-                      width="48"
-                      height="48"
-                      alt="Avatar"
-                      className="rounded-full"
-                    />
-                    <div>
+                    <UsersIcon />
+                    <div className="items-start">
                       <h3 className="text-xl font-bold">John Smith</h3>
                       <p className="text-gray-500 dark:text-gray-400">
                         Operations Manager, Widgets Inc
@@ -167,7 +159,9 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-500 dark:text-gray-400">
-                    {"I highly recommend Crew Scheduler to any business\n looking to streamline their crew scheduling process.\n It's\nuser-friendly, powerful, and has saved us a\n significantamount of time and money."}
+                    {
+                      "I highly recommend Crew Scheduler to any business\n looking to streamline their crew scheduling process.\n It's\nuser-friendly, powerful, and has saved us a\n significantamount of time and money."
+                    }
                   </p>
                 </div>
               </div>
@@ -340,7 +334,7 @@ function WisdomiaLogo(props: React.ImgHTMLAttributes<HTMLImageElement>) {
       height="50"
       alt="Wisdomia Logo"
       className="h-6 w-6"
-    />  
+    />
   );
 }
 
@@ -365,3 +359,5 @@ function UsersIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+
