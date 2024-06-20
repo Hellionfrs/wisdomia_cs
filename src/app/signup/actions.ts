@@ -3,6 +3,7 @@
 import { toast } from "sonner";
 import { FormState, SignUpFormSchema } from "./definitions"
 import { redirect } from "next/navigation";
+import { createSession } from "../_lib/session";
 
 export async function signup(state: FormState, formData: FormData): Promise<FormState> {
   // 1. Validate fields 
@@ -37,13 +38,17 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
     const errorData = await response.json();
     toast.error(errorData.message);
     return {
-      message: errorData,
+      errors: errorData,
     };
   }
 
-  
+  const sessionPayload = await response.json();
+  console.log(sessionPayload);
+  await createSession(sessionPayload.data[0].token)
+  console.log("token", sessionPayload.data[0].token);
   // Mutate data
   return {
     message: "User created",
+    id: sessionPayload.data[0].id,
   };    
 } 
