@@ -34,7 +34,7 @@ export async function getUserIdFromSession() {
     if (typeof payload !== "object") return redirect("/login");
     // console.log("payload", payload);
     // console.log("user id", payload.id);
-    return payload;
+    return payload.id;
   } catch (err) {
     console.log("error", err);
     return redirect("/login");

@@ -4,11 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { getUserIdFromSession } from "../_lib/session";
+import Settings from "./(settings)/settings";
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-  const payload = await getUserIdFromSession()
-  // console.log(payload)
-  const {id: userId} = payload
+  const id = await getUserIdFromSession()
   return (
     <div className="flex h-screen w-full">
       {/* navbar */}
@@ -23,15 +22,12 @@ export default async function Layout({ children }: { children: React.ReactNode }
             <span className="sr-only">Dashboard</span>
           </Link>
           <Link 
-          href={`/dashboard/profile/${payload.id}`} className="group" 
+          href={`/dashboard/profile/${id}`} className="group" 
           prefetch={false} >
             <UserIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Profile</span>
           </Link>
-          <Link href="#" className="group" prefetch={false}>
-            <SettingsIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
-            <span className="sr-only">Settings</span>
-          </Link>
+          <Settings />
         </nav>
         <div className="flex flex-col items-center gap-6">
           <Button variant="ghost" size="icon" className="rounded-full">
