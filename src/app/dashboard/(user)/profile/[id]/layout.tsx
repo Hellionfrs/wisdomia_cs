@@ -1,14 +1,16 @@
-import { Button } from "@/components/ui/button";
+import { getSession } from "@/app/_lib/session";
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <Card className="w-full max-w-lg">
       <CardHeader>

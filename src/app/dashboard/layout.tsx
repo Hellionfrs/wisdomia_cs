@@ -1,20 +1,20 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { getUserIdFromSession } from "../_lib/session";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const payload = await getUserIdFromSession()
+  // console.log(payload)
+  const {id: userId} = payload
   return (
     <div className="flex h-screen w-full">
       {/* navbar */}
       <div className="hidden h-full bg-background md:flex md:w-20 md:flex-col md:items-center md:justify-between md:border-r md:px-4 md:py-6">
         <nav className="flex flex-col items-center gap-6">
-          <Link href="#" className="group" prefetch={false}>
+          <Link href={"/dashboard"} className="group" prefetch={false}>
             <HomeIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Home</span>
           </Link>
@@ -22,7 +22,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <LayoutDashboardIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Dashboard</span>
           </Link>
-          <Link href="#" className="group" prefetch={false}>
+          <Link 
+          href={`/dashboard/profile/${payload.id}`} className="group" 
+          prefetch={false} >
             <UserIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Profile</span>
           </Link>
