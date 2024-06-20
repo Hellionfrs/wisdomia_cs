@@ -10,6 +10,7 @@ export async function login(
   // 1. Validate fields
   // 2. Create user
   // 3. Create session
+  
   const validationResult = LoginFormSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -37,7 +38,7 @@ export async function login(
   if (!response.ok) {
     const errorData = await response.json();
     return {
-      message: errorData,
+      errors: errorData,
     };
   }
   const sessionPayload = await response.json();

@@ -1,15 +1,18 @@
-import { fetchUser, updateUser } from "./actions";
-import Form from "./form";
+import { Suspense } from "react";
+import Form, { Formkeleton } from "./form";
+import { fetchUser } from "./actions";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   console.log(id);
-  const user = await fetchUser(id);
+  let user = await fetchUser(id);
   
-  console.log(user);
+  // console.log(user);
   return (
     <div>
-      <Form user={user} id={id} />
+      <Suspense fallback={<Formkeleton />}>
+        <Form user={user} id={id} />
+      </Suspense>
     </div>
   );
 }

@@ -5,10 +5,12 @@ import { EditUserSchema, FormState, User } from "./definitions";
 import { Edit } from "lucide-react";
 import { get } from "http";
 import { getSession } from "@/app/_lib/session";
+import { notFound, useParams } from "next/navigation";
 
 const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function fetchUser(userId: string): Promise<User | null> {
+  console.log(userId);
   const token = await getSession();
   console.log(token)
   const res = await fetch(`${BACKEND_URL}/user/${userId}`, {
@@ -17,11 +19,14 @@ export async function fetchUser(userId: string): Promise<User | null> {
       'Authorization': `Bearer ${token}`,
     },
   });
-  //   if (!res.ok) {
-  //     throw new Error("Failed to fetch user");
-  //   }
+    if (!res.ok) {
+      console.log("should redirect to not-found page");
+      notFound()
+    }
   const userResponse = await res.json();
+  // console.log(userResponse);
   const user = userResponse.data[0];
+  // console.log(user);
   return {id: user.id,
     name: user.first_name ,
     middleName: user.middle_name,

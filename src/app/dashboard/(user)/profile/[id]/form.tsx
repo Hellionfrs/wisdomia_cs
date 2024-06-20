@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { User } from "./definitions";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Form({ user, id }: { user: User | null; id: string }) {
   const [state, action] = useFormState(
@@ -143,5 +144,21 @@ function SubmitButton() {
     <Button disabled={pending} className="w-full" type="submit">
       {pending ? "Updating.." : "Update"}
     </Button>
+  );
+}
+
+// Form Skeleton
+
+export function Formkeleton() {
+  return (
+    <CardContent>
+      <div className="grid gap-2">
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-[100px] w-full" />
+      </div>
+    </CardContent>
   );
 }

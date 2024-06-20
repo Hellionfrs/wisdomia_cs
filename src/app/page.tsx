@@ -3,7 +3,6 @@ import Link from "next/link";
 import logo from "@/app/assets/logo.png";
 import hero from "@/app/assets/collorfulpens.jpg";
 import Navbar from "@/components/ui/navbar";
-import { User } from "lucide-react";
 
 export default function Home() {
   return (

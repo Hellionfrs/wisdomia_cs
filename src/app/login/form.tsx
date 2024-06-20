@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { useFormState, useFormStatus } from "react-dom";
@@ -7,11 +7,13 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
-
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function LoginForm() {
-    const [state, action] = useFormState( async (state: any, formData: FormData) => {
+  const [state, action] = useFormState(
+    async (state: any, formData: FormData) => {
       const result = await login(state, formData);
+      console.log(result);
       if (result?.message) {
         toast.success(result.message);
         redirect(`/dashboard/profile/${result.id}`);
@@ -19,7 +21,9 @@ export function LoginForm() {
         toast.error("Error creating user");
       }
       return result;
-    }, undefined);
+    },
+    undefined
+  );
   return (
     <form className="space-y-4" action={action}>
       <div className="space-y-2">
@@ -47,7 +51,9 @@ export function LoginForm() {
             <span>Password must have:</span>
             <ul className="flex flex-col pl-3">
               {state?.errors.password.map((error) => (
-                <li className="list-disc"key={error}>{error}</li>
+                <li className="list-disc" key={error}>
+                  {error}
+                </li>
               ))}
             </ul>
           </div>
@@ -65,5 +71,16 @@ function SubmitButton() {
     <Button disabled={pending} className="w-full" type="submit">
       {pending ? "Signing up..." : "Sign up"}
     </Button>
+  );
+}
+
+export function LoginSkeleton() {
+  return (
+    <div className="grid gap-2">
+      <div className="h-10 w-full" />
+      <div className="h-10 w-full" />
+      <Skeleton className="h-10 w-full" />
+      <Skeleton className="h-10 w-full" />
+    </div>
   );
 }
