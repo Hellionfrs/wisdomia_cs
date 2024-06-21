@@ -1,6 +1,5 @@
 import { getUserIdFromSession } from "@/app/_lib/session";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { get } from "http";
 import Link from "next/link";
 
 export default async function EditUser() {
@@ -9,7 +8,7 @@ export default async function EditUser() {
     <DropdownMenuItem>
       <Link
         href={`/dashboard/profile/${id}`}
-        className="flex items-center gap-2"
+        className="flex items-center"
       >
         <UserIcon className="mr-2 h-4 w-4" />
         Edit Profile

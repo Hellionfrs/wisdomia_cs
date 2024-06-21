@@ -147,18 +147,4 @@ function SubmitButton() {
   );
 }
 
-// Form Skeleton
 
-export function Formkeleton() {
-  return (
-    <CardContent>
-      <div className="grid gap-2">
-        <Skeleton className="h-10 w-full" />
-        <Skeleton className="h-10 w-full" />
-        <Skeleton className="h-10 w-full" />
-        <Skeleton className="h-10 w-full" />
-        <Skeleton className="h-[100px] w-full" />
-      </div>
-    </CardContent>
-  );
-}

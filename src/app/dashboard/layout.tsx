@@ -1,13 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { getUserIdFromSession } from "../_lib/session";
-import Settings from "./(settings)/settings";
+import Settings from "./(components)/(navbar)/(settings)/settings";
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
-  const id = await getUserIdFromSession()
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const id = await getUserIdFromSession();
   return (
     <div className="flex h-screen w-full">
       {/* navbar */}
@@ -21,9 +31,11 @@ export default async function Layout({ children }: { children: React.ReactNode }
             <LayoutDashboardIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Dashboard</span>
           </Link>
-          <Link 
-          href={`/dashboard/profile/${id}`} className="group" 
-          prefetch={false} >
+          <Link
+            href={`/dashboard/profile/${id}`}
+            className="group"
+            prefetch={false}
+          >
             <UserIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Profile</span>
           </Link>
@@ -143,15 +155,13 @@ export default async function Layout({ children }: { children: React.ReactNode }
         </header>
 
         {/* dashboard content */}
-        <main className="p-4 md:p-6">
-          {children}
-        </main>
+        <main className="p-4 md:p-6">{children}</main>
       </div>
     </div>
   );
 }
 
-function BellIcon(props:React.SVGProps<SVGSVGElement>) {
+function BellIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -213,7 +223,7 @@ function LayoutDashboardIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function LogOutIcon(props: React.SVGProps<SVGSVGElement>) { 
+function LogOutIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
