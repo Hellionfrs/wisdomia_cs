@@ -7,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "../../../../components/ui/button";
+import { Button } from "../ui/button";
 import WisdomiaSvg from "@/app/assets/logo.svg";
 import Image from "next/image";
 

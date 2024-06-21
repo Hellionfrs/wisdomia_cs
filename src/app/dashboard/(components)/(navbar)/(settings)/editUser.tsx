@@ -7,7 +7,7 @@ export default async function EditUser() {
   return (
     <DropdownMenuItem>
       <Link
-        href={`/dashboard/profile/${id}`}
+        href={`/dashboard/profile/${id}/edit`}
         className="flex items-center"
       >
         <UserIcon className="mr-2 h-4 w-4" />

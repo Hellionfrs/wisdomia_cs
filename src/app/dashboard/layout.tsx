@@ -32,7 +32,7 @@ export default async function Layout({
             <span className="sr-only">Dashboard</span>
           </Link>
           <Link
-            href={`/dashboard/profile/${id}`}
+            href={`/dashboard/profile/${id}/edit`}
             className="group"
             prefetch={false}
           >

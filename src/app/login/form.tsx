@@ -16,7 +16,7 @@ export function LoginForm() {
       console.log(result);
       if (result?.message) {
         toast.success(result.message);
-        redirect(`/dashboard/profile/${result.id}`);
+        redirect(`/dashboard`);
       } else if (result?.errors) {
         toast.error("Error creating user");
       }
