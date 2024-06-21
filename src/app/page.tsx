@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/app/assets/logo.png";
 import hero from "@/app/assets/collorfulpens.jpg";
-import Navbar from "@/components/ui/navbar";
+import Navbar from "@/components/landingPage/navbar";
 
 export default function Home() {
   return (

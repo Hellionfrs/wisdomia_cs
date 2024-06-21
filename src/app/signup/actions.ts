@@ -2,7 +2,6 @@
 
 import { toast } from "sonner";
 import { FormState, SignUpFormSchema } from "./definitions"
-import { redirect } from "next/navigation";
 import { createSession } from "../_lib/session";
 
 export async function signup(state: FormState, formData: FormData): Promise<FormState> {
