@@ -4,8 +4,7 @@ import { signup } from "@/app/signup/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
