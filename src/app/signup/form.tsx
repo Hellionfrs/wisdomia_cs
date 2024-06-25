@@ -5,16 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
 export function SignupForm() {
+  const router = useRouter();
   const [state, action] = useFormState(
     async (state: any, formData: FormData) => {
       const result = await signup(state, formData);
       if (result?.message) {
         toast.success(result.message);
-        redirect(`/dashboard`);
+        router.push(`/dashboard`);
       } else if (result?.errors) {
         toast.error("Error creating user");
       }

@@ -1,22 +1,24 @@
 "use client";
 
+
 import { Button } from "@/components/ui/button";
 import { useFormState, useFormStatus } from "react-dom";
 import { login } from "./actions";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useRouter } from "next/navigation";
 
 export function LoginForm() {
+  const router = useRouter();
   const [state, action] = useFormState(
     async (state: any, formData: FormData) => {
       const result = await login(state, formData);
       console.log(result);
       if (result?.message) {
         toast.success(result.message);
-        redirect(`/dashboard`);
+        router.push(`/dashboard`);
       } else if (result?.errors) {
         toast.error("Error creating user");
       }
