@@ -20,7 +20,7 @@ export default function NavbarDesktop({ id }: { id: string }) {
             <HomeIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Home</span>
           </Link>
-          <Link href="#" className="group" prefetch={false}>
+          <Link href={`/dashboard/profile/${id}/school`} className="group" prefetch={false}>
             <LayoutDashboardIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Dashboard</span>
           </Link>
