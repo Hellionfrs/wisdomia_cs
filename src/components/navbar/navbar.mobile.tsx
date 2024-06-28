@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import Settings from "./settings/settings";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { PersonStanding } from "lucide-react";
 
 export default function NavbarMobile({ id }: { id: string }) {
   return (
@@ -30,6 +31,14 @@ export default function NavbarMobile({ id }: { id: string }) {
           >
             <LayoutDashboardIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Dashboard</span>
+          </Link>
+          <Link
+            href={`/dashboard/profile/${id}/students`}
+            className="group"
+            prefetch={false}
+          >
+            <PersonStanding className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
+            <span className="sr-only">Students</span>
           </Link>
           <Link
             href={`/dashboard/profile/${id}/edit`}

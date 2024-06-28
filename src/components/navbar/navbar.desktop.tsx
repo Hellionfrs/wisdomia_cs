@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Icon, PersonStanding } from "lucide-react";
 
 export default function NavbarDesktop({ id }: { id: string }) {
   return (
@@ -27,6 +28,10 @@ export default function NavbarDesktop({ id }: { id: string }) {
           >
             <LayoutDashboardIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Dashboard</span>
+          </Link>
+          <Link href={`/dashboard/profile/${id}/students`} className="group" prefetch={false}>
+            <PersonStanding className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
+            <span className="sr-only">Students</span>
           </Link>
           <Link
             href={`/dashboard/profile/${id}/edit`}
