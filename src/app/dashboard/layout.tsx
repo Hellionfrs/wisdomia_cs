@@ -1,7 +1,7 @@
 import React from "react";
 import { getUserIdFromSession } from "../_lib/session";
-import NavbarDesktop from "./(components)/(navbar)/navbar.desktop";
-import NavbarMobile from "./(components)/(navbar)/navbar.mobile";
+import NavbarDesktop from "@/components/navbar/navbar.desktop";
+import NavbarMobile from "@/components/navbar/navbar.mobile";
 
 export default async function Layout({
   children,

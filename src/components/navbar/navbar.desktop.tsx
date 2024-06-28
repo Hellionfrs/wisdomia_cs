@@ -1,22 +1,23 @@
-import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import Image from "next/image";
 import Link from "next/link";
-import Settings from "./(settings)/settings";
+import Settings from "./settings/settings";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-
-export default function NavbarMobile({ id }: { id: string }) {
+export default function NavbarDesktop({ id }: { id: string }) {
   return (
     <>
-      <header className="sticky top-0 z-10 border-b bg-background px-4 py-3 md:hidden">
-        <div className="flex items-center justify-between">
-          <Link
-            href={"/dashboard"}
-            className="flex items-center gap-2"
-            prefetch={false}
-          >
-            <HomeIcon className="h-6 w-6 text-muted-foreground" />
+      <div className="hidden h-full bg-background md:flex md:w-20 md:flex-col md:items-center md:justify-between md:border-r md:px-4 md:py-6">
+        <nav className="flex flex-col items-center gap-6">
+          <Link href={"/dashboard"} className="group" prefetch={false}>
+            <HomeIcon className="h-6 w-6 text-muted-foreground group-hover:text-primary" />
             <span className="sr-only">Home</span>
           </Link>
           <Link
@@ -36,7 +37,14 @@ export default function NavbarMobile({ id }: { id: string }) {
             <span className="sr-only">Profile</span>
           </Link>
           <Settings />
+        </nav>
+        <div className="flex flex-col items-center gap-6">
+          <Button variant="ghost" size="icon" className="rounded-full">
+            <BellIcon className="h-6 w-6 text-muted-foreground" />
+            <span className="sr-only">Notifications</span>
+          </Button>
           <DropdownMenu>
+            {/* Trigger */}
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="rounded-full">
                 <Avatar>
@@ -45,6 +53,7 @@ export default function NavbarMobile({ id }: { id: string }) {
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
+            {/* Content */}
             <DropdownMenuContent align="end">
               <DropdownMenuItem>
                 <Link
@@ -80,29 +89,8 @@ export default function NavbarMobile({ id }: { id: string }) {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-      </header>
+      </div>
     </>
-  );
-}
-
-
-function BellIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-      <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-    </svg>
   );
 }
 
@@ -205,6 +193,26 @@ function UserIcon(props: React.SVGProps<SVGSVGElement>) {
     >
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function BellIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+      <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
     </svg>
   );
 }
