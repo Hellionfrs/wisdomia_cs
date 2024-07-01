@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Button } from "@/components/ui/button";
 import { useFormState, useFormStatus } from "react-dom";
 import { login } from "./actions";
@@ -9,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
+import { EyeIcon } from "lucide-react";
+import PasswordInput from "@/components/passwordInput";
 
 export function LoginForm() {
   const router = useRouter();
@@ -42,12 +43,8 @@ export function LoginForm() {
       </div>
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
-        <Input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-        />
+        {/* Password Input */}
+        <PasswordInput name="password" />
         {state?.errors?.password && (
           <div className="text-red-500 text-sm">
             <span>Password must have:</span>

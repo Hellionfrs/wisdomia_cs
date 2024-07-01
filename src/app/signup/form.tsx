@@ -1,6 +1,7 @@
 "use client";
 
 import { signup } from "@/app/signup/actions";
+import PasswordInput from "@/components/passwordInput";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -51,13 +52,7 @@ export function SignupForm() {
         )}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="password">Password</Label>
-        <Input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-        />
+        <PasswordInput name="password" />
         {state?.errors?.password && (
           <div className="text-red-500 text-sm">
             <span>Password must have:</span>
@@ -72,13 +67,7 @@ export function SignupForm() {
         )}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="confirmPassword">Confirm Password</Label>
-        <Input
-          id="confirmPassword"
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm your password"
-        />
+        <PasswordInput name="confirmPassword" />
         {state?.errors?.confirmPassword && (
           <div className="text-red-500 text-sm">
             <span>Password must have:</span>
