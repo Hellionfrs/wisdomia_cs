@@ -3,24 +3,27 @@ import { School as S } from "../../app/dashboard/(user)/profile/[id]/school/defi
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
+import { CheckCheck, CheckCheckIcon } from "lucide-react";
 
 export default function School({ data }: { data: S }) {
   return (
     <Card className="bg-card shadow flex flex-col justify-between">
-      <div className="p-4 md:p-6 flex items-start gap-4">
-        <Avatar>
-          <AvatarImage src={data.logo} />
-          <AvatarFallback>SC</AvatarFallback>
-        </Avatar>
-        <div>
-          <h2 className="text-lg font-semibold capitalize">{data.name}</h2>
-          <p className="text-muted-foreground">{data.address}</p>
+      <div className="p-2 flex justify-between items-center gap-4">
+        <div className="flex gap-2 items-center">
+          <Avatar>
+            <AvatarImage src={data.logo} />
+            <AvatarFallback>SC</AvatarFallback>
+          </Avatar>
+          <div>
+            <h2 className="text-sm font-semibold capitalize">{data.name}</h2>
+            <p className="text-xstext-muted-foreground">{data.address}</p>
+          </div>
         </div>
+        <Button>
+          <CheckCheckIcon></CheckCheckIcon>
+        </Button>
       </div>
-      <CardFooter>
-        {/* ToDo server action */}
-        <Button className="w-full">Request Access</Button>
-      </CardFooter>
+      {/* <CardFooter>ToDo server action</CardFooter> */}
     </Card>
   );
 }

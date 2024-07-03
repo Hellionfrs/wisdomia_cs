@@ -13,7 +13,7 @@ export const preload = (id: string) => {
 
 export const getSchools = cache(async (id: string): Promise<School[]> => {
   const token = await getSession();
-  const res = await fetch(`${BACKEND_URL}/school/${id}`, {
+  const res = await fetch(`${BACKEND_URL}/school`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
