@@ -1,11 +1,9 @@
-import { getSession } from "@/app/_lib/session";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Suspense } from "react";
 
 export default async function Layout({
   children,

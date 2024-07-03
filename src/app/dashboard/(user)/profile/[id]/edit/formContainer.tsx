@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default async function FormContainer({id}: {id: string}) {   
     console.log(id);
     let user = await fetchUser(id);
+    console.log(user);
   return (
     <div>
       <Form id={id} user={user} />

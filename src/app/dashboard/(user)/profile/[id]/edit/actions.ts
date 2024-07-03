@@ -32,8 +32,7 @@ export async function fetchUser(userId: string): Promise<User | null> {
     middleName: user.middle_name,
     surname: user.surname,
     secondSurname: user.second_surname,
-    email: user.email,
-    password: "",
+    email: user.email.toLowerCase(),
     cellphone: user.cellphone,
   };
 }
@@ -50,7 +49,6 @@ export async function updateUser(
     secondSurname: formData.get("secondSurname"),
     email: formData.get("email"),
     cellphone: formData.get("cellphone"),
-    password: formData.get("password"),
   });
 
   if (!validationResult.success) {

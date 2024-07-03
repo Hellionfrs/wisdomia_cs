@@ -11,15 +11,15 @@ export const UserSchema = z.object({
     .min(2, "Second surname must be at least 2 characters"),
   email: z.string().email("Invalid email"),
   cellphone: z.string().min(9, "Cellphone must be at least 9 digits"),
-  password: z
-    .string()
-    .min(8, { message: "Be at least 8 characters long" })
-    .regex(/[a-zA-Z]/, { message: "Contain at least one letter." })
-    .regex(/[0-9]/, { message: "Contain at least one number." })
-    .regex(/[^a-zA-Z0-9]/, {
-      message: "Contain at least one special character.",
-    })
-    .trim(),
+  // password: z
+  //   .string()
+  //   .min(8, { message: "Be at least 8 characters long" })
+  //   .regex(/[a-zA-Z]/, { message: "Contain at least one letter." })
+  //   .regex(/[0-9]/, { message: "Contain at least one number." })
+  //   .regex(/[^a-zA-Z0-9]/, {
+  //     message: "Contain at least one special character.",
+  //   })
+  //   .trim(),
 });
 
 // extract editUserSchema without id
@@ -36,7 +36,7 @@ export type FormState =
         secondSurname?: string[];
         email?: string[];
         cellphone?: string[];
-        password?: string[];
+        // password?: string[];
       };
       message?: string;
       // id?: string;

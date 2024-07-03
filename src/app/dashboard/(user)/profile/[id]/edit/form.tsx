@@ -110,7 +110,7 @@ export default function Form({ user, id }: { user: User | null; id: string }) {
             )}
           </div>
           {/* password */}
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
@@ -130,7 +130,7 @@ export default function Form({ user, id }: { user: User | null; id: string }) {
                 </ul>
               </div>
             )}
-          </div>
+          </div> */}
           <SubmitButton />
         </form>
       </CardContent>
@@ -146,5 +146,3 @@ function SubmitButton() {
     </Button>
   );
 }
-
-
