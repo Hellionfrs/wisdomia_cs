@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardFooter } from "@/components/ui/card";
 import { School as S } from "../../app/dashboard/(user)/profile/[id]/school/definitions";
 import { Button } from "@/components/ui/button";
@@ -5,12 +7,17 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import { CheckCheck, CheckCheckIcon } from "lucide-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
-export default function School({ data }: { data: S }) {
+export default function SchoolWithParams({ data }: { data: S }) {
+  const userId = useParams().id;
   return (
     <Card className="bg-card shadow flex flex-col justify-between">
       <div className="p-2 flex justify-between items-center gap-4">
-        <Link href={`/dashboard/profile/${data.id}/school`} className="flex gap-2 items-center">
+        <Link
+          href={`/dashboard/profile/${userId}/school/${data.id}`}
+          className="flex gap-2 items-center"
+        >
           <Avatar>
             <AvatarImage src={data.logo} />
             <AvatarFallback>SC</AvatarFallback>

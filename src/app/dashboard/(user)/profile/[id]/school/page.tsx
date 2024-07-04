@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Schools from "./schoolsAccess";
+import Schools from "./schoolsToAccess";
 import { Loader2 } from "lucide-react";
 import {
   Card,
@@ -9,6 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import SchoolsToAccess from "./schoolsToAccess";
+import SchoolsOwned from "./schoolsOwned";
 
 export default function SchoolPage({ params }: { params: { id: string } }) {
   const id = params.id;
@@ -30,7 +32,7 @@ export default function SchoolPage({ params }: { params: { id: string } }) {
                 <Loader2 className="w-12 h-12 text-primary animate-spin" />
               }
             >
-              <Schools id={id} />
+              <SchoolsToAccess />
             </Suspense>
           </main>
         </CardContent>
@@ -43,7 +45,13 @@ export default function SchoolPage({ params }: { params: { id: string } }) {
             View and manage the schools you have access to.
           </CardDescription>
           <CardContent>
-            <Schools id={id} />
+            <Suspense
+              fallback={
+                <Loader2 className="w-12 h-12 text-primary animate-spin" />
+              }
+            >
+              <SchoolsOwned id={id} />
+            </Suspense>
           </CardContent>
         </CardHeader>
       </Card>
