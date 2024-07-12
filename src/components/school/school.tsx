@@ -7,10 +7,16 @@ import { CheckCheck, CheckCheckIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function School({ data }: { data: S }) {
+  console.log(data);
+  console.log(data.name);
+  console.log(data.address);
   return (
     <Card className="bg-card shadow flex flex-col justify-between">
       <div className="p-2 flex justify-between items-center gap-4">
-        <Link href={`/dashboard/profile/${data.id}/school`} className="flex gap-2 items-center">
+        <Link
+          href={`/dashboard/profile/${data.id}/school`}
+          className="flex gap-2 items-center"
+        >
           <Avatar>
             <AvatarImage src={data.logo} />
             <AvatarFallback>SC</AvatarFallback>

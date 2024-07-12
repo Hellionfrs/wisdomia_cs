@@ -54,3 +54,26 @@ export const getSchoolsOwned = cache(
     return schools;
   }
 );
+
+export const getSchoolById = cache(
+  async (schoolId: string): Promise<School> => {
+    const token = await getSession();
+    const res = await fetch(`${BACKEND_URL}/school/${schoolId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!res.ok) {
+      console.log("should redirect to not-found page");
+      console.log(res);
+      notFound();
+    }
+    const schoolResponse = await res.json();
+    console.log(schoolResponse);
+    const school = schoolResponse.data[0];
+    //   revalidatePath(`/dashboard/profile/${id}/school`);
+    // console.log(schools);
+    return school;
+  }
+);
